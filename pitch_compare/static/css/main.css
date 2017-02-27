@@ -1,0 +1,25 @@
+/* main style sheet */
+
+div.dc-chart {
+    float: none;
+}
+
+#chart-row-pitch-per-opponent .x.axis text {
+    text-anchor: end !important;
+    transform: rotate(-45deg);
+}
+
+.dc-select-menu-container {
+    text-align: center;
+}
+
+.dc-select-menu {
+    height: 75%;
+    width: 75%;
+}
+
+.stats-table {
+    overflow: auto;
+    margin-left: 0;
+    margin-right: 0;
+}

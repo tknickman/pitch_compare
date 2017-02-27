@@ -1,0 +1,335 @@
+{% extends "base.jinja2" %}
+
+{% block header %}
+    <a class="navbar-brand" href="#">Dashboard</a>
+{% endblock %}
+
+{% block nav %}
+<ul class="nav">
+    <li class="active">
+        <a href="/dashboard">
+            <i class="ti-bar-chart"></i>
+            <p>Dashboard</p>
+        </a>
+    </li>
+    <li>
+        <a href="/pitchers">
+            <i class="ti-user"></i>
+            <p>Pitch Statistics</p>
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+        <div class="content">
+            <div class="container-fluid">
+                {# Previos Event Filters #}
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="dc-select-menu-container" id="player-select">
+                                        <h4 class="title">Select Players</h4>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <a href="javascript:playerSelect.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="dc-select-menu-container" id="game-select">
+                                        <h4 class="title">Select Games</h4>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <a href="javascript:gameSelect.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# Previos Event Filters #}
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="dc-select-menu-container" id="previous-out-select">
+                                        <h4 class="title">Out Count</h4>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <a href="javascript:prevOutSelect.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="dc-select-menu-container" id="previous-strike-select">
+                                        <h4 class="title">Strike Count</h4>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <a href="javascript:prevStrikeSelect.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-2">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="dc-select-menu-container" id="previous-ball-select">
+                                        <h4 class="title">Ball Count</h4>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    <hr />
+                                    <div class="stats">
+                                        <a href="javascript:prevBallSelect.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# Opponent#}
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Pitches Per Opponent</h4>
+                                <p class="category">Filter by Team(s)</p>
+                            </div>
+                            <div class="content">
+
+                                <!-- PITCH PER OPPONENT-->
+                                <div id="chart-row-pitch-per-opponent">
+                                    <div class="reset" style="visibility: hidden;">selected:
+                                        <span class="filter"></span>
+                                        <a href="javascript:pitchPerOpponent.filterAll();dc.redrawAll();">reset</a>
+                                    </div>
+                                </div>
+    
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <a href="javascript:pitchPerOpponent.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# Pitch Type and Strike / Ball #}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Type of Pitch</h4>
+                                <p class="category">Filter dashboard by pitch type(s)</p>
+                            </div>
+                            <div class="content">
+                                <div id="chart-ring-pitch-type">
+                                    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                                        <a href="javascript:pitchTypeRingChart.filterAll();dc.redrawAll();">reset</a>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <a href="javascript:pitchTypeRingChart.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Ball | Strike | Other</h4>
+                                <p class="category">Filter dashboard by pitch call(s)</p>
+                            </div>
+                            <div class="content">
+                                <div id="chart-ring-pitch-call">
+                                    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                                        <a href="javascript:pitchCallRingChart.filterAll();dc.redrawAll();">reset</a>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <a href="javascript:pitchCallRingChart.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {#               #}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Pitches Per Inning</h4>
+                                <p class="category">Filter dashboard by inning(s)</p>
+                            </div>
+                            <div class="content">
+                                <div id="chart-bar-pitches-per-inning">
+                                    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <a href="javascript:pitchesPerInning.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Pitches Thrown Per Day</h4>
+                                <p class="category">Filter dashboard by day(s)</p>
+                            </div>
+                            <div class="content">
+                                <div id="chart-row-pitch-day">
+                                    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                                        <a href="javascript:pitchesPerDay.filterAll();dc.redrawAll();">reset</a>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <a href="javascript:pitchesPerDay.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# Results (pitch and plate appearance #}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Result of Plate Appearance</h4>
+                                <p class="category">Last Campaign Performance</p>
+                            </div>
+                            <div class="content">
+
+                                <div id="chart-ring-pitch-event">
+                                    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                                        <a href="javascript:pitchEventRingChart.filterAll();dc.redrawAll();">reset</a>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <a href="javascript:pitchEventRingChart.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Result of Pitch</h4>
+                                <p class="category">Filter dashboard by pitch result(s)</p>
+                            </div>
+                            <div class="content">
+                                <div id="chart-ring-pitch-event-result">
+                                    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                                        <a href="javascript:pitchEventResultRingChart.filterAll();dc.redrawAll();">reset</a>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                        <a href="javascript:pitchEventResultRingChart.filterAll();dc.redrawAll();"><i class="ti-reload"></i> Reset Selection</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Pitch Speed Per Inning </h4>
+                                <p class="category">Filter dashboard by game (s)</p>
+                            </div>
+                            <div class="content">
+                                <div id="chart-bar-pitch-speed-per-inning">
+                                    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+                                        <a href="javascript:pitchSpeedPerInning.filterAll();dc.redrawAll();">reset</a>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <hr>
+                                    <div class="stats">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="https://dc-js.github.io/dc.js/js/d3.js"></script>
+    <script src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
+    <script src="https://dc-js.github.io/dc.js/js/dc.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.loadingoverlay/latest/loadingoverlay.min.js"></script>
+
+    <script src="{{ request.static_url('pitch_compare:static/js/main.js') }}"></script>
+    <script src="{{ request.static_url('pitch_compare:static/js/custom-charts.js') }}"></script>
+{% endblock %}

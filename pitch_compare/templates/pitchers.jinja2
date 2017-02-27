@@ -1,0 +1,103 @@
+{% extends "base.jinja2" %}
+
+{% block header %}
+    <a class="navbar-brand" href="#">Pitchers</a>
+{% endblock %}
+
+{% block nav %}
+    <ul class="nav">
+        <li>
+            <a href="/dashboard">
+                <i class="ti-bar-chart"></i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li class="active">
+            <a href="/pitchers">
+                <i class="ti-user"></i>
+                <p>Pitch Statistics</p>
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Striped Table</h4>
+                                <p class="category">Here is a subtitle for this table</p>
+                            </div>
+                            <div class="stats-table content table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+
+                                    <th>Unique pitcher identifier</th>
+                                    <th>Name</th>
+                                    <th>Date of birth</th>
+                                    <th>Organization</th>
+                                    <th>League</th>
+                                    <th>Games played</th>
+                                    <th>Games started</th>
+                                    <th>Batters faced</th>
+                                    <th>Year</th>
+                                    <th>Singles</th>
+                                    <th>Doubles</th>
+                                    <th>Triples</th>
+                                    <th>Home Runs</th>
+                                    <th>Unintentional walks</th>
+                                    <th>Intentional walks</th>
+                                    <th>Pitches that hit batter</th>
+                                    <th>Strikeouts</th>
+                                    <th>Percentage of BIP that are GB</th>
+                                    <th>Percentage of BIP that are LD</th>
+                                    <th>Percentage of BIP that are FB</th>
+                                    <th>Walk Percentage</th>
+                                    <th>Earned Run Average</th>
+                                    <th>Fielding Independent Pitching</th>
+                                    <th>Wins Above Replacement</th>
+
+                                    </thead>
+                                    <tbody>
+
+                                    {% for item in pitcher_data %}
+                                        <tr>
+                                            <td> {{ item.pitcher_id }} </td>
+                                            <td> {{ item.Name }} </td>
+                                            <td> {{ item.birth_date }} </td>
+                                            <td> {{ item.org }} </td>
+                                            <td> {{ item.League }} </td>
+                                            <td> {{ item.G }} </td>
+                                            <td> {{ item.GS }} </td>
+                                            <td> {{ item.TBF }} </td>
+                                            <td> {{ item.Year }} </td>
+                                            <td> {{ item.X1B }} </td>
+                                            <td> {{ item.X2B }} </td>
+                                            <td> {{ item.X3B }} </td>
+                                            <td> {{ item.HR }} </td>
+                                            <td> {{ item.BB }} </td>
+                                            <td> {{ item.IBB }} </td>
+                                            <td> {{ item.HBP }} </td>
+                                            <td> {{ item.SO }} </td>
+                                            <td> {{ item.GB }} </td>
+                                            <td> {{ item.LD }} </td>
+                                            <td> {{ item.FB }} </td>
+                                            <td> {{ item.BB }} </td>
+                                            <td> {{ item.ERA }} </td>
+                                            <td> {{ item.FIP }} </td>
+                                            <td> {{ item.rWAR }} </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+{% endblock %}
