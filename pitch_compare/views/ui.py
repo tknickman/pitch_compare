@@ -11,6 +11,10 @@ logger = logging.getLogger(__name__)
     route_name='dashboard_ui',
     renderer='templates/dashboard.jinja2'
 )
+@view_config(
+    route_name='index',
+    renderer='templates/dashboard.jinja2'
+)
 def dashboard_ui(request):
 
     logger.info('route=/dashboard')

@@ -17,6 +17,7 @@ def main(global_config, **settings):
     # UI routes
     config.add_route('pitcher_ui', '/pitchers')
     config.add_route('dashboard_ui', '/dashboard')
+    config.add_route('index', '/')
 
     config.scan()
     return config.make_wsgi_app()
