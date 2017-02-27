@@ -7,7 +7,6 @@ jsonschema==2.6.0
 MarkupSafe==0.23
 packaging==16.8
 PasteDeploy==1.5.2
-pitch-compare==0.0.1
 pyparsing==2.1.10
 pyramid==1.8.2
 pyramid-jinja2==2.7
